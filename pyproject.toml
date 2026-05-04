@@ -1,0 +1,9 @@
+[project]
+name = "tradedoc-ai-rag-platform"
+version = "0.1.0"
+description = "Financial document intelligence and retrieval API."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
