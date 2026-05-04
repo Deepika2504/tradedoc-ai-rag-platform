@@ -49,7 +49,5 @@ curl -X POST http://127.0.0.1:8000/ask \
   -d '{"document_text":"Account 7890\nTransaction 2026-01-02 ACH CREDIT Payroll $2450.50\nEnding balance $9368.44","question":"What was the ending balance?"}'
 ```
 
-## Resume Signal
 
-This repo supports a GenAI Engineer/Data Scientist profile by showing a realistic financial document workflow with extraction, retrieval, API delivery, and tests.
 
