@@ -9,13 +9,16 @@ TRANSACTION_RE = re.compile(
     r"\btransaction\s+"
     r"(?P<date>\d{4}-\d{2}-\d{2})\s+"
     r"(?P<description>.*?)\s+"
-    r"\$?(?P<amount>-?[\d,]+(?:\.\d{2})?)\b",
+    r"(?P<amount>-?\$?-?[\d,]+(?:\.\d{2})?)\b",
     re.I,
 )
 
 
 def _to_float(value: str) -> float:
-    return float(value.replace(",", ""))
+    normalized = value.replace(",", "").replace("$", "")
+    if normalized.count("-") > 1:
+        normalized = "-" + normalized.replace("-", "")
+    return float(normalized)
 
 
 def extract_document_fields(document_text: str) -> DocumentExtraction:
@@ -48,4 +51,3 @@ def extract_document_fields(document_text: str) -> DocumentExtraction:
         transactions=transactions,
         warnings=warnings,
     )
-

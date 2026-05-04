@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -9,8 +11,8 @@ class Transaction(BaseModel):
 
 
 class DocumentExtraction(BaseModel):
-    account_id: str | None
-    ending_balance: float | None
+    account_id: Optional[str]
+    ending_balance: Optional[float]
     transactions: list[Transaction]
     warnings: list[str] = []
 
@@ -34,4 +36,3 @@ class SourceSnippet(BaseModel):
 class AnswerResponse(BaseModel):
     answer: str
     sources: list[SourceSnippet]
-
